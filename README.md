@@ -83,4 +83,4 @@ These outcomes illustrate both the strengths and limitations of classical portfo
 
 ## Academic Context
 
-This project was co
+This project was completed as part of undergraduate studies and is intended as a foundation for further academic work at honours level, particularly in the areas of robust optimisation, improved return estimation, and advanced risk modelling.
