@@ -10,61 +10,53 @@ Asset selection is based on market prominence and liquidity, without prior funda
 
 ### Portfolio Optimisation
 
-Portfolio weights are determined using classical mean–variance optimisation. Portfolio return and variance are defined as:
+Portfolio expected return and variance are defined as:
 
-$\[
-\mathbb{E}[R_p] = \mathbf{w}^\top \boldsymbol{\mu}
-\]
+- Expected portfolio return:  
+  E[R_p] = wᵀ μ
 
-\[
-\sigma_p^2 = \mathbf{w}^\top \boldsymbol{\Sigma} \mathbf{w}
-\]
+- Portfolio variance:  
+  σ_p² = wᵀ Σ w
 
 where:
-- \(\mathbf{w}\) is the vector of portfolio weights  
-- \(\boldsymbol{\mu}\) is the vector of expected asset returns  
-- \(\boldsymbol{\Sigma}\) is the covariance matrix of asset returns  
-$
+- w is the vector of portfolio weights  
+- μ is the vector of expected asset returns  
+- Σ is the covariance matrix of asset returns  
+
 The minimum-variance portfolio is obtained by solving:
 
-\[
-\min_{\mathbf{w}} \ \mathbf{w}^\top \boldsymbol{\Sigma} \mathbf{w}
-\quad \text{subject to} \quad \mathbf{1}^\top \mathbf{w} = 1
-\]
+- Minimise:  
+  wᵀ Σ w  
+- Subject to:  
+  1ᵀ w = 1  
 
-The tangency (maximum Sharpe ratio) portfolio is defined as:
+The tangency (maximum Sharpe ratio) portfolio is given by:
 
-\[
-\mathbf{w}^* \propto \boldsymbol{\Sigma}^{-1} (\boldsymbol{\mu} - r_f \mathbf{1})
-\]
+- w* ∝ Σ⁻¹ (μ − r_f 1)
 
-where \(r_f\) is the risk-free rate. Short selling is allowed, resulting in unconstrained solutions.
+where r_f denotes the risk-free rate. Short selling is permitted, resulting in unconstrained solutions.
 
 ---
 
 ### Risk Simulation
 
-Portfolio risk is analysed using Monte Carlo simulation under a Geometric Brownian Motion (GBM) assumption:
+Asset prices are simulated using a Geometric Brownian Motion (GBM):
 
-\[
-dS_t = \mu S_t \, dt + \sigma S_t \, dW_t
-\]
+- dS_t = μ S_t dt + σ S_t dW_t
 
-Simulated asset paths are aggregated to generate a distribution of portfolio returns, from which downside risk metrics are computed.
+Simulated asset paths are aggregated to generate a distribution of portfolio returns.
 
 ---
 
 ### Risk Measurement and Hedging
 
-Downside risk is assessed using Value at Risk (VaR), defined at confidence level \(\alpha\) as:
+Downside risk is assessed using Value at Risk (VaR) at confidence level α:
 
-\[
-\text{VaR}_\alpha = - \inf \{ x \mid P(R_p \le x) \ge \alpha \}
-\]
+- VaR_α = − inf { x | P(R_p ≤ x) ≥ α }
 
 Option-based hedging strategies are applied to reduce tail risk:
-- Long positions are hedged using put options
-- Short positions are hedged using call options
+- Long positions are hedged using put options  
+- Short positions are hedged using call options  
 
 Options are priced using the Black–Scholes framework.
 
@@ -72,12 +64,12 @@ Options are priced using the Black–Scholes framework.
 
 ## Key Findings
 
-- Efficient frontiers expand significantly when short selling is permitted
-- Tangency portfolios exhibit extreme leverage due to sensitivity to expected return estimation
-- Monte Carlo simulations highlight substantial tail risk in unhedged portfolios
-- Option-based hedging materially reduces volatility and Value at Risk, with limited impact on expected return
+- Allowing short selling expands the efficient frontier significantly  
+- Tangency portfolios exhibit extreme leverage due to sensitivity to expected return estimation  
+- Monte Carlo simulations reveal substantial tail risk in unhedged portfolios  
+- Option-based hedging materially reduces volatility and Value at Risk, with limited impact on expected return  
 
-These outcomes illustrate both the strengths and limitations of classical portfolio optimisation when applied to empirically estimated inputs.
+These results highlight both the strengths and limitations of classical portfolio optimisation when applied to empirically estimated inputs.
 
 ---
 
