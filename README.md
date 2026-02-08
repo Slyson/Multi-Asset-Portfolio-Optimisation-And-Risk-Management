@@ -34,6 +34,80 @@ where $r_f$ denotes the risk-free rate. Short selling is permitted, resulting in
 
 ---
 
+---
+
+## Sensitivity Analysis
+
+### Sensitivity of the Tangency Portfolio to the Risk-Free Rate
+
+Mean–variance optimisation is known to be highly sensitive to input assumptions, particularly the risk-free rate used in the construction of the tangency portfolio. To assess the robustness of the results, a sensitivity analysis is conducted by varying the annual risk-free rate over a wide range and recalculating the tangency portfolio weights, expected return, volatility, and Sharpe ratio at each level.
+
+The tangency portfolio weights are defined as:
+
+\[
+\mathbf{w}^*(r_f) \propto \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} - r_f \mathbf{1})
+\]
+
+As the risk-free rate increases, the excess return vector \((\boldsymbol{\mu} - r_f \mathbf{1})\) shrinks and eventually changes sign, causing substantial changes in portfolio composition.
+
+---
+
+### Outcomes
+
+**1. Existence of a Critical Risk-Free Rate**
+
+The analysis reveals a critical region around \( r_f \approx 7.8\% \)–\( 8.06\% \), where the behaviour of the tangency portfolio changes abruptly:
+
+- At \( r_f \approx 7.8\% \), the expected tangency portfolio return reaches its maximum (approximately 28.5%).
+- Beyond this point, a marginal increase in the risk-free rate causes the expected return to collapse sharply, reaching a trough (approximately −94.56%) at \( r_f \approx 8.06\% \).
+
+This behaviour indicates a structural break rather than a gradual deterioration in performance.
+
+---
+
+**2. Instability of Portfolio Weights**
+
+Portfolio weights exhibit extreme sensitivity in the same region:
+
+- Asset weights increase rapidly in magnitude as the optimiser attempts to compensate for declining excess returns.
+- Around the critical threshold, several asset positions flip sign (long to short and vice versa).
+- This reflects the optimiser exploiting increasingly small differences in estimated returns, amplified by the inversion of the covariance matrix.
+
+Such weight instability is a well-documented limitation of unconstrained mean–variance optimisation.
+
+---
+
+**3. Sharpe Ratio Sign Reversal**
+
+The Sharpe ratio transitions from positive to negative over the same range:
+
+- At \( r_f \approx 7.8\% \), the Sharpe ratio remains positive (approximately 0.127).
+- At \( r_f \approx 8.06\% \), the Sharpe ratio becomes negative (approximately −0.127).
+
+A negative Sharpe ratio implies that the tangency portfolio underperforms the risk-free asset, rendering the concept of a “maximum Sharpe” portfolio economically meaningless beyond this point.
+
+---
+
+**4. Volatility Explosion**
+
+Portfolio volatility exhibits nonlinear behaviour:
+
+- Volatility initially increases moderately as leverage rises.
+- Near the critical threshold, volatility explodes, peaking at approximately 740%.
+- Beyond this point, volatility stabilises as portfolio weights become dominated by numerical artefacts rather than economically meaningful exposures.
+
+The volatility spike is a consequence of leverage amplification driven by vanishing excess returns, not an increase in underlying asset risk.
+
+---
+
+### Analysis
+
+This sensitivity analysis demonstrates that the tangency portfolio is not robust to small changes in the risk-free rate. When excess returns approach zero, unconstrained mean–variance optimisation produces extreme leverage, unstable weights, and explosive volatility. As a result, the tangency portfolio should be interpreted primarily as a theoretical construct rather than a practically implementable investment strategy in unconstrained settings.
+
+---
+
+
+
 ### Risk Simulation
 
 Asset prices are simulated using a Geometric Brownian Motion:
