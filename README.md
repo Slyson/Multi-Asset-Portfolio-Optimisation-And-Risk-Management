@@ -12,7 +12,7 @@ Asset selection is based on market prominence and liquidity, without prior funda
 
 Portfolio weights are determined using classical mean–variance optimisation. Portfolio return and variance are defined as:
 
-\[
+$\[
 \mathbb{E}[R_p] = \mathbf{w}^\top \boldsymbol{\mu}
 \]
 
@@ -24,7 +24,7 @@ where:
 - \(\mathbf{w}\) is the vector of portfolio weights  
 - \(\boldsymbol{\mu}\) is the vector of expected asset returns  
 - \(\boldsymbol{\Sigma}\) is the covariance matrix of asset returns  
-
+$
 The minimum-variance portfolio is obtained by solving:
 
 \[
